@@ -3,7 +3,7 @@ using namespace std;
 
 int main(){
 
-  int mx, n;
+  int n;
   cin>>n;
   int arr[n];
 
@@ -11,19 +11,20 @@ int main(){
     cin>>arr[i];
   }
 
-  mx=arr[0];
 
   for(int i=0; i<n; i++){
-    if(arr[i] > mx){
-      mx = arr[i];
-    }else{
-      arr[i] = mx;
+
+    int sum = 0;
+
+    for(int j=i; j<n; j++){
+        sum += arr[j];
+        cout<<sum<<" ";
+
     }
+
   }
 
-  for(int i=0; i<n ; i++){
-    cout<<arr[i]<<" ";
-  }
+
 
   return 0;
 

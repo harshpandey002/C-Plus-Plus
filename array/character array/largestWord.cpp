@@ -5,20 +5,28 @@ int main(){
 
   int n;
   cin>>n;
-
-  char arr[n+1];
-  cin.getline(arr, n);
   cin.ignore();
 
-  int i=0, mx=0, s=0;
+  char arr[n+1];
+  cin.get(arr, n);
+  cin.ignore();
 
-  while(arr[i] != '\0'){
+  int i=0, mx=0, s=1;
+
+  while(i<n){
     if (arr[i] == '\0' || arr[i] == ' ') {
-      mx = max(mx, s);
+      if(mx < s){
+        mx = s;
+      }
       s=0;
-    }
+    } else{
       s++;
-      i++;
+    }
+
+    if(arr[i] == '\0'){
+      break;
+    }
+    i++;
   }
 
   cout<<mx;

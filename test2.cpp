@@ -53,16 +53,17 @@
 #include <vector>
 #include <iostream>
 #include <algorithm>
+#include<climits>
 using namespace std;
 
-int count(int arr, int s, int e){
+int count(int arr[], int s, int e){
 
     if(s == e){
         return arr[s];
     } else if(s < e){
 
-        int mi = 0;
-        int idx, t;
+        int mi = INT_MAX;
+        int idx;
 
         for(int i=s; i<=e; i++){
             if(arr[i] < mi){
@@ -75,7 +76,7 @@ int count(int arr, int s, int e){
             arr[i]-=mi;
         }
 
-        return min + count(arr[], s, idx-e) + count(arr[], s+idx, e);
+        return mi + count(arr, s, idx-1) + count(arr, 1+idx, e);
     }
 }
 
@@ -87,7 +88,7 @@ int main() {
         cin >> arr[i];
     }
 
-    cout << count(arr[], 0, n-1);
+    cout << count(arr, 0, n-1);
 
     return 0;
 }
